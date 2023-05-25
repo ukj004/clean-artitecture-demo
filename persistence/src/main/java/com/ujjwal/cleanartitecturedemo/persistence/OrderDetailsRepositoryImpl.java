@@ -1,5 +1,6 @@
 package com.ujjwal.cleanartitecturedemo.persistence;
 
+import com.ujjwal.cleanartitecturedemo.common.OrderDetailsConstants;
 import com.ujjwal.cleanartitecturedemo.domain.entity.OrderResponse;
 import com.ujjwal.cleanartitecturedemo.domain.exception.OrderDetailsInternalServerException;
 import com.ujjwal.cleanartitecturedemo.domain.repository.OrderDetailsRepository;
@@ -30,7 +31,7 @@ public class OrderDetailsRepositoryImpl implements OrderDetailsRepository {
                 ex ->
                         Mono.error(
                                 new OrderDetailsInternalServerException(
-                                        "Error occurred while retrieving Order Details with order id ::"  + orderId)));
+                                        OrderDetailsConstants.ORDER_DETAILS_INTERNAL_SERVER_ERROR_MSG + orderId)));
     }
 
 }

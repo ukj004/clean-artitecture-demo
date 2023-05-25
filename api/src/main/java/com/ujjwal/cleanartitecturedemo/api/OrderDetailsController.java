@@ -1,6 +1,7 @@
 package com.ujjwal.cleanartitecturedemo.api;
 
 
+import com.ujjwal.cleanartitecturedemo.common.OrderDetailsConstants;
 import com.ujjwal.cleanartitecturedemo.domain.entity.OrderResponse;
 import com.ujjwal.cleanartitecturedemo.domain.service.OrderDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class OrderDetailsController {
     @Autowired
     private OrderDetailsService orderDetailsService;
 
-    @GetMapping("/getOrderDetails/{order-id}")
+    @GetMapping(OrderDetailsConstants.ORDER_DETAILS_BY_ORDER_ID)
     @ResponseStatus(HttpStatus.OK)
     public Flux<OrderResponse> getOrderDetails(@PathVariable("order-id") String orderId) {
         return orderDetailsService.getOrderDetails(orderId);

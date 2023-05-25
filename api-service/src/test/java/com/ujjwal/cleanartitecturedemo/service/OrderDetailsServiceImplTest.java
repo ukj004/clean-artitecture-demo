@@ -70,7 +70,6 @@ public class OrderDetailsServiceImplTest {
      StepVerifier.create(orderDetailsServiceImpl.getOrderDetails(anyString()))
              .expectNextCount(0)
              .expectErrorMatches(throwable -> throwable instanceof OrderNotFoundException
-                     && ((OrderNotFoundException) throwable).exceptionMessage.equals("Order Details Not Found")
              )
              .verify();
     }

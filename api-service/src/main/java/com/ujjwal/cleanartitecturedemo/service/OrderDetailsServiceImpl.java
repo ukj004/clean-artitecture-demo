@@ -1,5 +1,6 @@
 package com.ujjwal.cleanartitecturedemo.service;
 
+import com.ujjwal.cleanartitecturedemo.common.OrderDetailsConstants;
 import com.ujjwal.cleanartitecturedemo.domain.entity.OrderResponse;
 import com.ujjwal.cleanartitecturedemo.domain.exception.OrderDetailsInternalServerException;
 import com.ujjwal.cleanartitecturedemo.domain.exception.OrderNotFoundException;
@@ -22,9 +23,9 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
         return orderDetailsRepository.getOrderDetailsByOrderId(orderId)
                 .onErrorResume(
                         ex -> Mono.error(
-                                        new OrderDetailsInternalServerException("Internal server exception while retrieving order details")))
+                                        new OrderDetailsInternalServerException(OrderDetailsConstants.ORDER_DETAILS_INTERNAL_SERVER_ERROR_MSG)))
                 .switchIfEmpty(
                         Mono.error(
-                                new OrderNotFoundException("Order Details Not Found")));
+                                new OrderNotFoundException(OrderDetailsConstants.ORDER_DETAILS_DATA_NOT_FOUND_ERROR_MSG + orderId)));
     }
 }
