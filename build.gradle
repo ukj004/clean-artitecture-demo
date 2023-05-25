@@ -1,0 +1,49 @@
+plugins {
+	id 'org.springframework.boot' version '3.0.0' apply false
+	id 'org.sonarqube' version '3.5.0.2730'
+	id 'java'
+	id 'java-library'
+}
+
+subprojects {
+
+//	group = "net.apmoller.crb.telikos.com.maersk.domain.billing"
+	version = "0.0.1-SNAPSHOT"
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java-library'
+
+	repositories {
+		mavenCentral()
+	}
+	dependencyManagement {
+		imports {
+			mavenBom("org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE")
+			mavenBom("org.testcontainers:testcontainers-bom:1.18.1")
+			mavenBom("org.springframework.cloud:spring-cloud-dependencies:2021.0.1")
+		}
+	}
+
+	dependencies {
+		implementation("org.springframework.boot:spring-boot-starter-webflux")
+		testImplementation ("org.springframework.boot:spring-boot-starter-test")
+		testImplementation ("io.projectreactor:reactor-test")
+		testImplementation 'org.junit.jupiter:junit-jupiter-api'
+		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+		compileOnly 'org.projectlombok:lombok:1.18.26'
+		annotationProcessor 'org.projectlombok:lombok:1.18.26'
+		annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+		testCompileOnly 'org.projectlombok:lombok:1.18.26'
+		testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+		implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+	}}
+
+allprojects{
+	group = 'com.ujjwal'
+	version = '0.0.1-SNAPSHOT'
+	java.sourceCompatibility(JavaVersion.VERSION_17)
+
+//	task('hello').doLast{
+//		println "I'm $project.name"
+//	}
+}
+

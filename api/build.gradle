@@ -1,0 +1,17 @@
+plugins {
+}
+
+//group 'com.ujjwal'
+//version '0.0.1-SNAPSHOT'
+//
+//repositories {
+//    mavenCentral()
+//}
+
+dependencies {
+    implementation project(':domain')
+}
+
+test {
+    useJUnitPlatform()
+}
